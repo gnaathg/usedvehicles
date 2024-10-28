@@ -58,6 +58,7 @@ class VehicleDetailView(View):
 
 class VehicleDeleteView(View):
 
+
     def get(self,request,*args,**kwargs):
 
         id = kwargs.get("id")
@@ -65,3 +66,15 @@ class VehicleDeleteView(View):
         Vehicle.objects.get(id=id).delete()
 
         return redirect("vehicle-list")
+
+class VehicleUpdateView(View):
+
+    template_name = "vehicle_edit.html"
+
+    form_class = VehicleForm
+
+    def get(self,request,*args,**kwargs):
+
+        form_instance = self.form_class()
+
+        return render(request,self.template_name,{'form':form_instance})

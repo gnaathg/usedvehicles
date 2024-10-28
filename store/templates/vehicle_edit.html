@@ -8,11 +8,12 @@
 </head>
 
 <body>
+    <h1>Change your vehicle</h1>
     <div class="container">
         <form method="POST" action="">
             {%csrf_token%}
             {{form.as_p}}
-            <button type="submit">Submit</button>
+            <button type="submit">Update</button>
 
         </form>
     </div>
