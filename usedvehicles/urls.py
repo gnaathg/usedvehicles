@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('vehicle/',views.VehicleView.as_view(),name='vehicle'),
     path('vehicle/all/',views.VehicleListView.as_view(),name='vehicle-list'),
+    path('vehicle/<int:id>',views.VehicleDetailView.as_view(),name='vehicle-detail'),
+    path('vehicle/<int:id>/remove',views.VehicleDeleteView.as_view(),name='vehicle-delete'),
 ]
