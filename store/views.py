@@ -16,7 +16,7 @@ class VehicleView(View):
 
     def post(self, request, *args, **kwargs):
         form_data = request.POST
-        form_instance = self.form_class(form_data)
+        form_instance = self.form_class(form_data,files=request.FILES)
 
         if form_instance.is_valid():
             data = form_instance.cleaned_data
@@ -29,7 +29,8 @@ class VehicleView(View):
                 color=data.get("color"),
                 price=data.get("price"),
                 brand=data.get("brand"),
-                owner_type=data.get("owner_type")  
+                owner_type=data.get("owner_type"),  
+                picture=data.get("picture")
             )
             
             # Redirect to the vehicle list view after successful form submission
@@ -134,7 +135,7 @@ class VehicleUpdateView(View):
 
         form_data=request.POST
 
-        form_instance=self.form_class(form_data)
+        form_instance=self.form_class(form_data,files=request.FILES)
 
         if form_instance.is_valid():
 
